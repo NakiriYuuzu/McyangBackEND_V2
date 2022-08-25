@@ -5,6 +5,8 @@ urlpatterns = [
     # FIXME: API先資料庫在事件！
     path('api/StudentLogin/', student_login),
     path('api/CourseList/', course_list),
+    path('api/CourseSignList/', course_sign_list),
+    path('api/CourseSignup/', course_signup),
 
     # path('api/studentLogin/', student_login),
     # path('api/showCourse/', show_course),
