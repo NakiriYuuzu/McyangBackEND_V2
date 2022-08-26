@@ -7,6 +7,7 @@ urlpatterns = [
     path('api/CourseList/', course_list),
     path('api/CourseSignList/', course_sign_list),
     path('api/CourseSignup/', course_signup),
+    path('api/TeacherLogin/', teacher_login),
 
     # path('api/studentLogin/', student_login),
     # path('api/showCourse/', show_course),

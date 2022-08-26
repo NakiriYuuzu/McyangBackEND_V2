@@ -1,3 +1,5 @@
+import datetime
+
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND, HTTP_406_NOT_ACCEPTABLE, \
@@ -32,36 +34,13 @@ def student_login(request):
     return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False}, status=status)
 
 
-@csrf_exempt  # TODO: 登入驗證
-def teacher_login(request):
-    email = request.POST.get('T_email')
-    password = request.POST.get('T_password')
-    print(email, password)
-    data = {}
-
-    if request.method == 'GET':
-        status = HTTP_500_INTERNAL_SERVER_ERROR
-
-    else:
-        if McyangTeacher.objects.filter(T_email=email, T_password=password).exists():
-            data['S_id'] = McyangStudent.objects.get(T_email=email, T_password=password).S_id
-            data['S_name'] = McyangStudent.objects.get(T_email=email, T_password=password).S_name
-            status = HTTP_200_OK
-
-        else:
-            status = HTTP_400_BAD_REQUEST
-
-    return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False}, status=status)
-
-
 @csrf_exempt  # TODO: 課程列表
 def course_list(request):
     s_id = request.POST.get('S_id')
     data = []
 
     if request.method == 'GET':
-        data.append({'message': 'Not allowed get method!'})
-        status = HTTP_404_NOT_FOUND
+        status = HTTP_500_INTERNAL_SERVER_ERROR
 
     else:
         if s_id:
@@ -74,10 +53,10 @@ def course_list(request):
                 for result in raw:
                     data.append({'C_id': result.C_id, 'C_name': result.C_name, 'T_name': result.T_name})
             else:
-                status = HTTP_404_NOT_FOUND
+                status = HTTP_400_BAD_REQUEST
 
         else:
-            status = HTTP_500_INTERNAL_SERVER_ERROR
+            status = HTTP_404_NOT_FOUND
 
     return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False}, status=status)
 
@@ -133,12 +112,53 @@ def course_signup(request):
                 if McyangSignRecord.objects.filter(Sign_id=sign_id, S_id=s_id).exists():
                     status = HTTP_400_BAD_REQUEST  # [400]已簽到過
                 else:
-                    data['message'] = '簽到成功！'
-                    status = HTTP_200_OK
+                    status = HTTP_200_OK  # [200]簽到成功！
+                    do_insert = McyangSignRecord.objects.create(Sign_id=sign_id, S_id=s_id, crtTime=datetime.datetime.now())
+                    do_insert.save()
         else:
             status = HTTP_404_NOT_FOUND  # [404]沒資料
 
     else:
         status = HTTP_500_INTERNAL_SERVER_ERROR  # [500]不是POST的情況
+
+    return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False}, status=status)
+
+
+# TODO: ====== 老師端 ======
+@csrf_exempt  # TODO: 登入驗證
+def teacher_login(request):
+    email = request.POST.get('T_email')
+    password = request.POST.get('T_password')
+    print(email, password)
+    data = {}
+
+    if request.method == 'GET':
+        status = HTTP_500_INTERNAL_SERVER_ERROR
+
+    else:
+        if McyangTeacher.objects.filter(T_email=email, T_password=password).exists():
+            data['T_id'] = McyangTeacher.objects.get(T_email=email, T_password=password).T_id
+            data['T_name'] = McyangTeacher.objects.get(T_email=email, T_password=password).T_name
+            status = HTTP_200_OK
+
+        else:
+            status = HTTP_400_BAD_REQUEST
+
+    return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False}, status=status)
+
+
+@csrf_exempt
+def course_create(request):
+    c_name = request.POST.get("C_name")
+    t_id = request.POST.get("T_id")
+    data = []
+
+    if request.method == 'GET':
+        status = HTTP_500_INTERNAL_SERVER_ERROR
+    else:
+        if c_name and t_id:
+            status = HTTP_200_OK
+        else:
+            status = HTTP_404_NOT_FOUND
 
     return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False}, status=status)
