@@ -10,11 +10,11 @@
       <jdbc-url>jdbc:mariadb://127.0.0.1:3306/mcyang_test</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="mcyang_test@localhost" uuid="f78c1757-2442-4110-a180-d0d5aab41a66">
+    <data-source source="LOCAL" name="@120.110.115.127" uuid="54c3ba18-4b5c-4c70-90f4-1afbd26b731b">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://localhost:3306/mcyang_test</jdbc-url>
+      <jdbc-url>jdbc:mariadb://120.110.115.127:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

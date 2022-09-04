@@ -54,7 +54,7 @@ class McyangCourseRecord(models.Model):
 class McyangRaceAnswer(models.Model):
     R_id = models.AutoField(primary_key=True, default=1)
     C_id = models.ForeignKey(McyangCourse, on_delete=models.CASCADE, to_field="C_id")
-    R_doc = models.TextField(max_length=255, unique=True)
+    R_doc = models.TextField(max_length=255)
     Status = models.BooleanField(default=True)
     crtTime = models.DateTimeField(auto_now_add=True)
 

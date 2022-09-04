@@ -10,6 +10,9 @@ urlpatterns = [
     path('api/CourseCreate/', course_create),
     path('api/SignCreate/', sign_create),
     path('api/SignRecordList/', sign_record_list),
+    path('api/RaceCreate/', race_create),
+    path('api/RaceListList/', race_list_list),
+    path('api/RaceListCreate/', race_list_create),
 
     # path('api/studentLogin/', student_login),
     # path('api/showCourse/', show_course),
