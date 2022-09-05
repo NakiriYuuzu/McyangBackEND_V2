@@ -6,7 +6,7 @@ from django.db import models
 class McyangTeacher(models.Model):
     T_id = models.AutoField(primary_key=True, default=1)
     T_name = models.TextField(max_length=30)
-    T_email = models.TextField(max_length=50, unique=True)
+    T_email = models.CharField(max_length=50, unique=True)
     T_password = models.TextField(max_length=50)
     T_image = models.ImageField(upload_to='img_teacher/')
     crtTime = models.DateTimeField(auto_now_add=True)
@@ -19,7 +19,7 @@ class McyangTeacher(models.Model):
 class McyangStudent(models.Model):
     S_id = models.AutoField(primary_key=True, default=1)
     S_name = models.TextField(max_length=30)
-    S_email = models.TextField(max_length=50, unique=True)
+    S_email = models.CharField(max_length=50, unique=True)
     S_password = models.TextField(max_length=50)
     S_image = models.ImageField(upload_to='img_student/')
     crtTime = models.DateTimeField(auto_now_add=True)

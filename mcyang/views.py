@@ -7,6 +7,7 @@ from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST, HTTP_404_NO
     HTTP_500_INTERNAL_SERVER_ERROR, HTTP_417_EXPECTATION_FAILED
 
 from .models import *
+from firebase_admin.messaging import Message, Notification
 
 
 # TODO:Create your views here[tableName->Function].
@@ -164,7 +165,9 @@ def course_create(request):
             status = HTTP_200_OK
             try:
                 with transaction.atomic():
-                    McyangCourse.objects.create(C_id=McyangCourse.objects.count() + 1, C_name=c_name, T_id_id=t_id,
+                    seq_no = McyangCourse.objects.filter().count() + 1
+                    Message(Notification(title="Hello World", body="Hello World"))
+                    McyangCourse.objects.create(C_id=seq_no, C_name=c_name, T_id_id=t_id,
                                                 C_image="", crtTime=datetime.datetime.now())
             except:
                 status = HTTP_417_EXPECTATION_FAILED

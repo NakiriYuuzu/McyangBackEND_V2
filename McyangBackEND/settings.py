@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'mcyang',
     'rest_framework',
     'django_extensions',
-    'sequences.apps.SequencesConfig',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +76,7 @@ WSGI_APPLICATION = 'McyangBackEND.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mcyang_test',
+        'NAME': 'mcyangtest',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
