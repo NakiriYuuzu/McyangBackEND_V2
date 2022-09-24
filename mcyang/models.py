@@ -99,6 +99,7 @@ class McyangTeamDesc(models.Model):
     TD_doc = models.TextField(max_length=255)
     TD_total = models.IntegerField()
     TD_limit = models.IntegerField()
+    TD_status = models.IntegerField(null=True)  # 0=Close 1=On
     C_id = models.ForeignKey(McyangCourse, on_delete=models.CASCADE, to_field="C_id")
     crtTime = models.DateTimeField(auto_now_add=True)
 
@@ -109,7 +110,7 @@ class McyangTeamDesc(models.Model):
 class McyangTeam(models.Model):
     T_id = models.AutoField(primary_key=True, default=1)
     TD_id = models.ForeignKey(McyangTeamDesc, on_delete=models.CASCADE, to_field="TD_id")
-    Group_number = models.IntegerField()
+    Group_number = models.IntegerField(null=True)  # 0=未選上 1=選上
     Leader_id = models.ForeignKey(McyangStudent, on_delete=models.CASCADE)
     crtTime = models.DateTimeField(auto_now_add=True)
 
@@ -121,6 +122,7 @@ class McyangTeamMember(models.Model):
     TM_id = models.AutoField(primary_key=True, default=1)
     S_id = models.ForeignKey(McyangStudent, on_delete=models.CASCADE, to_field="S_id")
     T_id = models.ForeignKey(McyangTeam, on_delete=models.CASCADE, to_field="T_id")
+    Team_number = models.IntegerField(null=True)  # 0=未選上 1=選上
     crtTime = models.DateTimeField(auto_now_add=True)
 
     class Meta:

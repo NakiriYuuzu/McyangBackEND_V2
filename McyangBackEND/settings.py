@@ -38,7 +38,16 @@ INSTALLED_APPS = [
     'mcyang',
     'rest_framework',
     'django_extensions',
+    'channels'
 ]
+
+ASGI_APPLICATION = 'McyangBackEND.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

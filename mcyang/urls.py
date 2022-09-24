@@ -3,6 +3,7 @@ from .views import *
 
 urlpatterns = [
     # FIXME: API先資料庫在事件！
+    # path('yuuzu/home/', home),
     path('api/Login/', login),
     path('api/CourseList/', course_list),
     path('api/CourseSignList/', course_sign_list),
@@ -13,6 +14,12 @@ urlpatterns = [
     path('api/RaceCreate/', race_create),
     path('api/RaceListList/', race_list_list),
     path('api/RaceListCreate/', race_list_create),
+    path('api/RaceAnswerList/', race_answer_list),
+    path('api/TeamDescCreate/', team_desc_create),
+    path('api/TeamLeaderCreate/', team_leader_create),
+    path('api/TeamMemberCreate/', team_member_create),
+    path('api/TeamLeaderList/', team_leader_list),
+    path('api/TeamMemberList/', team_member_list),
 
     # path('api/studentLogin/', student_login),
     # path('api/showCourse/', show_course),
