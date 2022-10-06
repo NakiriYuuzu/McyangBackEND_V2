@@ -161,3 +161,16 @@ class McyangQuizAnswer(models.Model):
 
     class Meta:
         db_table = 'mc_answermember'
+
+
+class McyangTeamChat(models.Model):
+    GroupChat_id = models.AutoField(primary_key=True, default=1)
+    TeamDesc_id = models.ForeignKey(McyangTeamDesc, on_delete=models.CASCADE, to_field="TD_id")
+    Course_id = models.ForeignKey(McyangCourse, on_delete=models.CASCADE, to_field="C_id")
+    TeamLeader_id = models.ForeignKey(McyangTeam, on_delete=models.CASCADE, to_field="T_id")
+    ChatRoom = models.CharField(max_length=100, null=True)
+    crtTime = models.DateTimeField(auto_now_add=True)
+    status = models.BooleanField(null=True)
+
+    class Meta:
+        db_table = 'mc_Teamchat'

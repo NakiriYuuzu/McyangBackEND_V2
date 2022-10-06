@@ -20,6 +20,9 @@ urlpatterns = [
     path('api/TeamMemberCreate/', team_member_create),
     path('api/TeamLeaderList/', team_leader_list),
     path('api/TeamMemberList/', team_member_list),
+    path('api/TeamDescList/', team_list),
+    path('api/TeamChatCreate/', team_chat_create),
+    path('api/TeamChatList/', team_chat_list)
 
     # path('api/studentLogin/', student_login),
     # path('api/showCourse/', show_course),

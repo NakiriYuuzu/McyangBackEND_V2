@@ -144,12 +144,15 @@ def course_signup(request):
                     try:
                         with transaction.atomic():
                             status = HTTP_200_OK  # [200]簽到成功！
-                            crt_date = McyangSign.objects.get(Sign_id=sign_id).crtTime
+                            sign = McyangSign.objects.get(Sign_id=sign_id)
+                            course_id = sign.C_id.C_id
+                            crt_date = sign.crtTime
                             seq_no = McyangSignRecord.objects.filter().count() + 1
                             McyangSignRecord.objects.create(SR_id=seq_no, Sign_id_id=sign_id, S_id_id=s_id,
                                                             crtTime=datetime.datetime.now())
                             date = crt_date.date()
                             data['Sign_id'] = sign_id
+                            data['C_id'] = course_id
                             data['Crt_time'] = date
 
                             channel_layer = get_channel_layer()
@@ -472,6 +475,7 @@ def team_desc_create(request):
     doc = request.POST.get('Doc')
     total = request.POST.get('Total')
     limit = request.POST.get('Limit')
+
     data = {}
 
     if request.method == 'POST':
@@ -481,7 +485,7 @@ def team_desc_create(request):
                     status = HTTP_200_OK
                     seq_no = McyangTeamDesc.objects.filter().count() + 1
                     insert = McyangTeamDesc.objects.create(TD_id=seq_no, TD_doc=doc, TD_total=total, TD_limit=limit,
-                                                           C_id_id=course_id)
+                                                           C_id_id=course_id, TD_status='0')
                     data['TeamDesc_id'] = insert.TD_id
             except Exception as e:
                 print(e)
@@ -569,7 +573,7 @@ def team_leader_create(request):
                                     'message': 'RaceList',
                                     'TeamDesc_id': teamdesc_id,
                                     'Identity': user,
-                                    'Leader': 1,
+                                    'Leader': 2,
                                     'Member': '0'
                                 }
                             )
@@ -605,12 +609,13 @@ def team_leader_create(request):
 def team_member_create(request):
     member_sid = request.POST.get('S_id')
     teamleader_id = request.POST.get('TeamLeader_id')
+    teamdesc_id = request.POST.get('TeamDesc_id')
     team_num = request.POST.get('Team_number')
     user = request.POST.get('User')
     data = {}
 
     if request.method == 'POST':
-        if member_sid and teamleader_id and user and not team_num:
+        if member_sid and teamleader_id and user and not team_num and not teamdesc_id:
             teamdesc_id = McyangTeam.objects.get(T_id=teamleader_id).TD_id_id
             limited = McyangTeamDesc.objects.get(TD_id=teamdesc_id).TD_limit
             current = McyangTeamMember.objects.filter(T_id_id=teamleader_id).count() + 1
@@ -663,9 +668,9 @@ def team_member_create(request):
             else:
                 status = HTTP_404_NOT_FOUND
                 print('人數已上限！')
-        elif teamleader_id and team_num and user and not member_sid:  # STOP GROUPING
+        elif teamdesc_id and user and not teamleader_id and not team_num and not member_sid:  # STOP GROUPING
             status = HTTP_200_OK
-            teamdesc_id = McyangTeam.objects.get(T_id=teamleader_id).TD_id_id
+            McyangTeamDesc.objects.filter(TD_id=teamdesc_id).update(TD_status=1)
             channel_layer = get_channel_layer()
             async_to_sync(channel_layer.group_send)(
                 'group',
@@ -757,6 +762,167 @@ def team_member_list(request):
                 data.append(
                     {'TeamMember_id': member.TM_id, 'S_name': member.S_id.S_name, 'S_email': member.S_id.S_email})
 
+        else:
+            status = HTTP_400_BAD_REQUEST
+    else:
+        status = HTTP_500_INTERNAL_SERVER_ERROR
+
+    return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False}, status=status)
+
+
+@csrf_exempt
+def team_list(request):
+    teamdesc_id = request.GET.get('TeamDesc_id', '')
+    course_id = request.GET.get('C_id', '')
+    s_id = request.GET.get('S_id', '')
+    data = []
+    print(teamdesc_id)
+
+    if request.method == 'GET':
+        if teamdesc_id and not s_id:
+            status = HTTP_200_OK
+            leader = McyangTeam.objects.raw('select distinct tl.* from mc_team tl '
+                                            'left join mc_teamdesc td on td.TD_id = tl.TD_id_id and td.TD_status = 1 '
+                                            'where td.TD_id = %s', [teamdesc_id])
+            for i in leader:
+                member_list = []
+                member = McyangTeamMember.objects.raw('select distinct tm.*, tl.Leader_id_id, td.TD_doc from mc_teammember tm '
+                                                      'left join mc_team tl on tl.T_id = tm.T_id_id and tl.Group_number = 1 '
+                                                      'left join mc_teamdesc td on td.TD_id = tl.TD_id_id and td.TD_status = 1 '
+                                                      'where tl.T_id = %s', [i.T_id])
+                for j in member:
+                    member_list.append({'S_id': j.S_id_id, 'S_name': McyangStudent.objects.get(S_id=j.S_id_id).S_name})
+                data.append({'TeamDesc_id': i.TD_id_id, 'T_id': i.T_id, 'S_id': i.Leader_id_id, 'S_name': McyangStudent.objects.get(S_id=i.Leader_id_id).S_name, 'Member': member_list})
+        elif course_id and not teamdesc_id and not s_id:
+            status = HTTP_200_OK
+            select = McyangTeamDesc.objects.filter(C_id_id=course_id, TD_status=1).order_by('-crtTime')
+            for i in select:
+                data.append({'TD_id': i.TD_id, 'TD_doc': i.TD_doc, 'CrtTime': i.crtTime.date()})
+        elif s_id and not teamdesc_id:
+            status = HTTP_200_OK
+            if McyangTeamMember.objects.filter(S_id_id=s_id).exists():
+                select = McyangTeamMember.objects.raw('select distinct tm.*, tl.Leader_id_id, td.TD_id, td.TD_doc from mc_teammember tm '
+                                                      'inner join mc_team tl on tm.T_id_id = tl.T_id and tl.Group_number = 1 '
+                                                      'inner join mc_teamdesc td on td.TD_id = tl.TD_id_id and td.TD_status = 1 '
+                                                      'where tm.S_id_id = %s', [s_id])
+                for i in select:
+                    name = McyangStudent.objects.get(S_id=i.S_id_id).S_name
+                    data.append({'TeamDesc_id': i.TD_id, 'TeamLeader_id': i.T_id_id, 'Doc': i.TD_doc, 'S_id': i.S_id_id, 'S_name': name, 'IsLeader': 'false'})
+            if McyangTeam.objects.filter(Leader_id_id=s_id).exists():
+                select = McyangTeam.objects.raw('select distinct tl.*, tl.Leader_id_id, td.TD_doc from mc_team tl '
+                                                'inner join mc_teammember tm on tm.T_id_id = tl.T_id '
+                                                'inner join mc_teamdesc td on td.TD_id = tl.TD_id_id and td.TD_status = 1 '
+                                                'where tl.Group_number = 1 and tl.Leader_id_id = %s', [s_id])
+                for i in select:
+                    name = McyangStudent.objects.get(S_id=i.Leader_id_id).S_name
+                    data.append({'TeamDesc_id': i.TD_id_id, 'TeamLeader_id': i.T_id, 'Doc': i.TD_doc, 'S_id': i.Leader_id_id, 'S_name': name, 'IsLeader': 'true'})
+            data.sort(key=lambda x: -x['TeamDesc_id'])
+        else:
+            status = HTTP_400_BAD_REQUEST
+    else:
+        status = HTTP_500_INTERNAL_SERVER_ERROR
+
+    return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False}, status=status)
+
+
+@csrf_exempt
+def team_chat_create(request):
+    teamdesc_id = request.POST.get('TeamDesc_id')
+    chat_title = request.POST.get('Chat_title')
+    print(teamdesc_id, chat_title)
+    data = []
+
+    if request.method == 'POST':
+        if teamdesc_id and chat_title:
+            if not McyangTeamChat.objects.filter(TeamDesc_id=teamdesc_id).exists():  # 判斷是否已經建立！
+                try:
+                    with transaction.atomic():
+                        status = HTTP_200_OK
+                        course_id = McyangTeamDesc.objects.get(TD_id=teamdesc_id).C_id
+                        leader = McyangTeam.objects.raw('select distinct tl.* from mc_team tl '
+                                                        'left join mc_teamdesc td on td.TD_id = tl.TD_id_id and td.TD_status = 1 '
+                                                        'where td.TD_id = %s', [teamdesc_id])
+                        for i in leader:
+                            seq_no = McyangTeamChat.objects.filter().count() + 1
+                            insert = McyangTeamChat.objects.create(GroupChat_id=seq_no, TeamLeader_id_id=i.T_id,
+                                                                   TeamDesc_id_id=i.TD_id_id, ChatRoom=chat_title, Course_id=course_id, status=True)
+                            data.append({'GroupChat_id': insert.GroupChat_id, 'ChatTitle': insert.ChatRoom, 'TeamLeader_id': insert.TeamLeader_id.T_id, 'S_name': insert.TeamLeader_id.Leader_id.S_name, 'CrtTime': insert.crtTime})
+
+                except Exception as e:
+                    status = HTTP_417_EXPECTATION_FAILED
+                    print(e)
+            else:
+                title = McyangTeamChat.objects.filter(TeamDesc_id=teamdesc_id)[0].ChatRoom
+                if chat_title != title:
+                    try:
+                        with transaction.atomic():
+                            status = HTTP_200_OK
+                            course_id = McyangTeamDesc.objects.get(TD_id=teamdesc_id).C_id
+                            leader = McyangTeam.objects.raw('select distinct tl.* from mc_team tl '
+                                                            'left join mc_teamdesc td on td.TD_id = tl.TD_id_id '
+                                                            'where td.TD_id = %s', [teamdesc_id])
+                            for i in leader:
+                                seq_no = McyangTeamChat.objects.filter().count() + 1
+                                insert = McyangTeamChat.objects.create(GroupChat_id=seq_no, TeamLeader_id_id=i.T_id, TeamDesc_id_id=i.TD_id_id, ChatRoom=chat_title, Course_id=course_id, status=True)
+                                data.append({'GroupChat_id': insert.GroupChat_id, 'ChatTitle': insert.ChatRoom, 'TeamLeader_id': insert.TeamLeader_id.T_id, 'S_name': insert.TeamLeader_id.Leader_id.S_name, 'CrtTime': insert.crtTime})
+
+                    except Exception as e:
+                        status = HTTP_417_EXPECTATION_FAILED
+                        print(e)
+                else:
+                    status = HTTP_406_NOT_ACCEPTABLE  # 重複！
+        else:
+            status = HTTP_400_BAD_REQUEST
+    else:
+        status = HTTP_500_INTERNAL_SERVER_ERROR
+
+    return JsonResponse(data, safe=False, json_dumps_params={'ensure_ascii': False}, status=status)
+
+
+@csrf_exempt
+def team_chat_list(request):
+    course_id = request.GET.get('C_id', '')
+    teamdesc_id = request.GET.get('TeamDesc_id', '')
+    teamleader_id = request.GET.get('TeamLeader_id', '')
+    chat_title = request.GET.get('ChatTitle', '')
+    data = []
+
+    if request.method == 'GET':
+        if course_id and not teamdesc_id and not chat_title and not teamleader_id:
+            status = HTTP_200_OK
+            select = McyangTeamChat.objects.filter(Course_id=course_id)
+            for i in select:
+                data.append({'GroupChat_id': i.GroupChat_id, 'TeamLeader_id': i.TeamLeader_id.T_id, 'S_name': i.TeamLeader_id.Leader_id.S_name, 'ChatTitle': i.ChatRoom, 'CrtTime': i.crtTime.date(), 'TeamDesc_id': i.TeamDesc_id.TD_id})
+
+        elif teamdesc_id and not course_id and not chat_title:
+            status = HTTP_200_OK
+            select = McyangTeamChat.objects.filter(TeamDesc_id=teamdesc_id).distinct()
+            for i in select:
+                data.append({'GroupChat_id': i.GroupChat_id, 'TeamLeader_id': i.TeamLeader_id.T_id, 'S_name': i.TeamLeader_id.Leader_id.S_name, 'ChatTitle': i.ChatRoom, 'CrtTime': i.crtTime.date(), 'C_id': i.Course_id.C_id})
+        elif teamdesc_id and course_id and not chat_title and not teamleader_id:
+            status = HTTP_200_OK
+            duplicate = []
+            select = McyangTeamChat.objects.filter(TeamDesc_id=teamdesc_id, Course_id=course_id).order_by('-crtTime')
+            for i in select:
+                if len(duplicate) == 0:
+                    duplicate.append(i.ChatRoom)
+                    data.append({'ChatTitle': i.ChatRoom, 'CrtTime': i.crtTime.date()})
+                else:
+                    if i.ChatRoom in duplicate:
+                        continue
+                    else:
+                        duplicate.append(i.ChatRoom)
+                        data.append({'ChatTitle': i.ChatRoom, 'CrtTime': i.crtTime.date()})
+        elif chat_title and teamdesc_id and not course_id and not teamleader_id:
+            status = HTTP_200_OK
+            select = McyangTeamChat.objects.filter(ChatRoom=chat_title, TeamDesc_id=teamdesc_id)
+            for i in select:
+                data.append({'GroupChat_id': i.GroupChat_id, 'TeamLeader_id': i.TeamLeader_id.T_id, 'S_name': i.TeamLeader_id.Leader_id.S_name, 'ChatTitle': i.ChatRoom, 'CrtTime': i.crtTime.date(), 'C_id': i.Course_id.C_id})
+        elif teamleader_id and not chat_title and not teamdesc_id and not course_id:
+            status = HTTP_200_OK
+            select = McyangTeamChat.objects.filter(TeamLeader_id_id=teamleader_id)
+            for i in select:
+                data.append({'GroupChat_id': i.GroupChat_id, 'S_name': i.TeamLeader_id.Leader_id.S_name, 'ChatTitle': i.ChatRoom})
         else:
             status = HTTP_400_BAD_REQUEST
     else:

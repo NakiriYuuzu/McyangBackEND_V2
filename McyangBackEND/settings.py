@@ -95,7 +95,7 @@ DATABASES = {
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'mssql',
-#         'NAME': 'mydb',
+#         'NAME': '',
 #         'USER': 'user@myserver',
 #         'PASSWORD': 'password',
 #         'HOST': 'myserver.database.windows.net',
@@ -131,11 +131,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'GMT'
+TIME_ZONE = 'Asia/Taipei'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
