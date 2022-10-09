@@ -1,0 +1,1747 @@
+{
+	"info": {
+		"_postman_id": "1eb83200-2a75-4bf7-ba91-8d0414b75c22",
+		"name": "McyangAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "11237707-1eb83200-2a75-4bf7-ba91-8d0414b75c22"
+	},
+	"item": [
+		{
+			"name": "Login - for Student",
+			"id": "58a67a4b-7c3c-438f-a314-4f53f20a2b16",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Teacher",
+			"id": "824360b2-60a0-4e77-9d57-516b774eef93",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "T_email",
+							"value": "McyangTest01",
+							"type": "text"
+						},
+						{
+							"key": "T_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Course - List",
+			"id": "b5d06530-099e-463c-aaf2-29a3be5991c5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "T_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/CourseList/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"CourseList",
+						""
+					]
+				},
+				"description": "\\*   **PICK ONCE**\n    \\*   S_id\n    \\*   T_id"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"id": "edde5fd9-4157-48ba-ae9a-2c8507dc9b34",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"id": "921d8353-1d94-4a7b-8f89-90364b68c225",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"id": "07be17ee-d132-4af5-be6d-8a91ada29925",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"id": "409c6d95-ce81-449c-a0ba-41c8d335cfad",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 2",
+			"id": "144f1243-914b-48a8-bce9-1c7dbc769755",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"id": "234e6547-251c-4026-a0a7-bd5fa4bce85e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "df0bcc72-e5dd-4a1e-b084-71049bc0a154",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"id": "9bab526a-92b5-4866-995f-377582fffc09",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "35a83277-850e-4d01-a723-857b9675b27c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "64524d2a-1151-47b3-9057-3ad63dde1f48",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "d83e531c-059b-43ef-bf58-4f5a69b4c414",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "80f5bfe7-5ece-4a97-a600-0452e6d29307",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"id": "444bcb87-2086-4b75-9fbf-87b640ae272e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "774cfaf3-0da3-432e-997c-fa4dd6aa6670",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "f0723566-c789-4c53-a756-89e8c29c362c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "e315d8bb-f252-43c7-ae1f-7b7825af6ccd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "6268919e-6e8a-4302-813d-c47baa3400de",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 2",
+			"id": "dc1e4eab-f3ad-4c18-9204-2e67b037e17d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"id": "9995c2c2-3afb-43b6-a2fe-ebb9c32a8cca",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "968283c3-1e33-4098-860e-22b3deeb8348",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "d7a5ca50-1c9c-4c19-ade5-942204ca71cf",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "2b319751-9f9e-4b26-b776-3187999df883",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"id": "83a81eba-8587-4ad4-9fa6-29b8f4229496",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "9ae36672-0904-42c8-a9b3-ce850349e2e1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "194c9b8b-aef4-4439-ac70-478ea7d2adb2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "77781cb2-be8e-48e7-b47e-1c6f716fdd39",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "6b1ba85c-5a9e-4e0e-89cf-3cf484a6db41",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"id": "793ca3c3-5e8d-4585-a458-0ab5e35618a7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "105f192e-de3f-4b0e-8db8-9ae4456ccacc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "cd2fc13c-433e-4c00-8328-f3e4481d74d9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "63ed84a2-cc74-4366-83c4-ee54d29b4c52",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "8846dcc7-c8ca-400d-86d2-b40d12d3240d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 3",
+			"id": "8bd5f278-310e-49f7-922d-1da92f3f7e50",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "02f10254-06b2-47f9-b3fc-a8a31bcc6173",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "fb61a1e4-5f65-4b1a-9ed1-bedcbda8dba0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Login - for Student Copy 4",
+			"id": "17398761-ce94-4ddc-8e27-80f8cf4b858b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "S_email",
+							"value": "studentTest01",
+							"type": "text"
+						},
+						{
+							"key": "S_password",
+							"value": "0000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://120.110.115.127/api/Login/",
+					"protocol": "http",
+					"host": [
+						"120",
+						"110",
+						"115",
+						"127"
+					],
+					"path": [
+						"api",
+						"Login",
+						""
+					]
+				},
+				"description": "request Login"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "82ac3d0d-3f99-4004-9330-dd1862caa7d2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "211aa20c-9467-433e-a642-8d2ac8543af2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "cf5cb05d-bfda-45b9-8c9c-b0fe08cd4e04",
+			"key": "S_email",
+			"value": "studentTest01",
+			"type": "string"
+		},
+		{
+			"id": "1e54db33-bcc7-4e42-a666-0d5688775e76",
+			"key": "S_password",
+			"value": "0000",
+			"type": "string"
+		},
+		{
+			"id": "69f7a1ba-df8a-4c1d-b1a4-a1f8b027a322",
+			"key": "T_email",
+			"value": "McyangTest01",
+			"type": "string"
+		},
+		{
+			"id": "02138fb0-7679-4302-a5aa-831cbdb846ef",
+			"key": "T_password",
+			"value": "0000",
+			"type": "string"
+		},
+		{
+			"id": "2418f274-a0f4-471d-a43e-65351ab6b9c9",
+			"key": "S_id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"id": "96fabd22-b1c2-49e0-9aa1-0daefc792d20",
+			"key": "T_id",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}

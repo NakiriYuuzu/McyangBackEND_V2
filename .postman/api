@@ -1,0 +1,14 @@
+id = bfc7d555-c321-401c-adac-38d0c70a1db1
+
+[relations]
+
+[relations.collections]
+rootDirectory = postman/collections
+files[] = {"id":"11237707-1eb83200-2a75-4bf7-ba91-8d0414b75c22","path":"McyangAPI.json","metaData":{}}
+
+[relations.collections.metaData]
+
+[relations.apiDefinition]
+rootDirectory = postman/schemas
+
+[relations.apiDefinition.metaData]
